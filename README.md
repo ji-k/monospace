@@ -1,6 +1,6 @@
 # monospace
 
-![Live](https://mono-space.herokuapp.com/)
+[Live](https://mono-space.herokuapp.com/)
 
 [screenshot1]
 
@@ -8,8 +8,8 @@
 
 ## Target Features
 * User authentication: users can sign up and sign in
-* Stories: users can create stories
-* Comments: users can comment on stories
+* Posts: users can create posts
+* Comments: users can comment on posts
 
 
 ## Technologies Used
@@ -28,7 +28,6 @@
 
 ### Hosting
 * Heroku
-
 
 ## How To Launch
 ### Backend
