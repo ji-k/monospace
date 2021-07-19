@@ -11,6 +11,7 @@ const setPosts = (posts) => ({
 export const getPosts = () => async (dispatch) => {
     const res = await fetch('/api/posts');
     const posts = await res.json();
+    console.log(res)
     dispatch(setPosts(posts));
 }
 
