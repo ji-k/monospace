@@ -11,7 +11,7 @@ const setPosts = (posts) => ({
 export const getPosts = () => async (dispatch) => {
     const res = await fetch('/api/posts');
     const posts = await res.json();
-    console.log(res)
+    console.log("postS", posts)
     dispatch(setPosts(posts));
 }
 
@@ -22,7 +22,8 @@ const initialState = {};
 const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_POSTS:
-            return { ...state, ...Object.fromEntries(action.posts.map((post) => [post.id, post])) };
+            const newPosts = Object.fromEntries(action.posts.map((post) => [post.id, post]))
+            return { ...state, ...newPosts };
         default:
             return state;
     }
