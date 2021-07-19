@@ -25,7 +25,6 @@ const PostsContainer = () => {
                 <div className='post-content'>{post.content}</div>
             </div>
         ))
-
     )
 }
 

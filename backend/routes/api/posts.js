@@ -9,9 +9,7 @@ const { Post } = require('../../db/models');
 // API route
 router.get('/', asyncHandler(async (req, res) => {
     const posts = await Post.findAll();
-    console.log(res.json(posts))
     return res.json(posts)
-    // console.log(posts)
 }))
 
 // export the router
