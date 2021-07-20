@@ -6,4 +6,6 @@
 
 .signup-form-container ul {
     position: relative;
+    top: -135px;
+    right: 20px;
 }
