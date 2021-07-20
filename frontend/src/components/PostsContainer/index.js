@@ -10,7 +10,6 @@ const PostsContainer = () => {
     // declare variables from hooks
     const dispatch = useDispatch();
     const posts = useSelector((state) => Object.values(state.posts));
-    // const post = posts[0]
 
     // use a 'react' hook and cause a side effect
     useEffect(() => {
@@ -18,10 +17,10 @@ const PostsContainer = () => {
     }, [dispatch])
 
     return (
-        posts.map(post => (
-            <div className={styles.postsContainer}>
+        posts.reverse().map(post => (
+            <div className='post-container'>
                 <div className='post-title'>{post.title}</div>
-                <div className='post-author'>{post.id}</div>
+                {/* <div className='post-author'>{post.id}</div> */}
                 <div className='post-content'>{post.content}</div>
             </div>
         ))
