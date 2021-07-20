@@ -1,0 +1,12 @@
+.post-container {
+    width: 75%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.post-title {
+    font-family: 'helvetica neue', 'helvetica', sans-serif;
+    font-size: 22pt;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
