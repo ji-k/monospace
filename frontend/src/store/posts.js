@@ -1,3 +1,4 @@
+import { csrfFetch } from './csrf'
 // define action type as constants
 const SET_POSTS = 'posts/setPosts'
 const SET_POST = 'posts/setPost'
@@ -36,7 +37,7 @@ export const getPost = (id) => async (dispatch) => {
 
 // define thunk creator for POST request
 export const writePost = (payload) => async (dispatch) => {
-    const res = await fetch('/api/posts', {
+    const res = await csrfFetch('/api/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -60,7 +61,7 @@ const postsReducer = (state = initialState, action) => {
             return { ...state, ...newPosts };
 
         case ADD_POST:
-            const addPost = { posts: [...state.posts, action.newPost] };
+            const addPost = { ...state.posts, ...action.newPost };
             return { ...state, ...addPost };
 
         case SET_POST:
