@@ -6,6 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PostsContainer from "./components/PostsContainer";
 import * as postsActions from "./store/posts"
+import PostPage from "./components/PostPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,7 +24,12 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <PostsContainer />
+          <Route exact path="/">
+            <PostsContainer />
+          </Route>
+          <Route path="/posts/:id">
+            <PostPage />
+          </Route>
         </Switch>
       )}
     </>
