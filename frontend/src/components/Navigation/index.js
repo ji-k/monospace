@@ -27,7 +27,7 @@ function Navigation({ isLoaded }) {
       <ul>
         <li>
           <NavLink exact to="/">monospace</NavLink>
-          <div class="nav-end">{isLoaded && sessionLinks}</div>
+          <div className="nav-end">{isLoaded && sessionLinks}</div>
         </li>
       </ul>
     </nav>
