@@ -1,11 +1,14 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { writePost } from "../../store/posts";
+import { useHistory } from "react-router-dom";
 import "./PostCreate.css";
 
 const CreatePost = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
+    const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
@@ -18,6 +21,7 @@ const CreatePost = () => {
         e.preventDefault();
         const newPost = {
             title: title,
+            userId: sessionUser.id,
             content,
         };
 
@@ -25,6 +29,7 @@ const CreatePost = () => {
         const newPostObj = await dispatch(writePost(newPost));
         console.log(newPostObj);
         reset();
+        history.push('/');
     };
 
     return (
