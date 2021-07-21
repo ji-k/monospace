@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import './PostPage.css'
 
 // import the thunk creator
-import { getPost } from '../../store/posts';
+// import { getPost } from '../../store/posts';
 import { getPosts } from '../../store/posts';
 
 const PostPage = () => {
@@ -22,9 +22,10 @@ const PostPage = () => {
     }, [dispatch, id]);
 
     return (
-        <div>
-            <h2>{postPage.title}</h2>
-            <p>{postPage.content}</p>
+        <div className="single-post">
+            <div className="single-post-title">{postPage.title}</div>
+            <div className="single-post-date">{postPage.createdAt}</div>
+            <div className="single-post-content">{postPage.content}</div>
         </div>
     )
 }
