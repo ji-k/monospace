@@ -45,3 +45,8 @@ nav button {
 .profile-dropdown {
     border-bottom: 0px;
 }
+
+.nav-create-post {
+    letter-spacing: 0px;
+    margin-right: 10px;
+}

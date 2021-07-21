@@ -5,18 +5,43 @@ const router = express.Router();
 
 // middleware
 const { Post } = require('../../db/models');
+const { validateCreate } = require('../../validations/posts');
 
-// API route
+// Get Posts
 router.get('/', asyncHandler(async (req, res) => {
     const posts = await Post.findAll();
     return res.json(posts);
 }));
 
-// API route individual posts
+// Get a Post
 router.get('/:id', asyncHandler(async (req, res) => {
     const post = await Post.findByPk(req.params.id);
     return res.json(post);
 }));
+
+// Create a Post
+router.post('', validateCreate, asyncHandler(async (req, res) => {
+    const post = await Post.create(req.body);
+    return res.json(post)
+}))
+
+// Edit a Post
+// ! fix this
+// router.put('/:id', asyncHandler(async (req, res) => {
+//     const id = req.params.id;
+//     const { title, content } = req.body;
+//     console.log({ title, content });
+//     await Post.update({ title, content },
+//         {
+//             where: { id },
+//             returning: true,
+//             plain: true
+//         }
+//     )
+//     const post = await Post.findByPk(id);
+//     return res.json(song)
+// }))
+
 
 // export the router
 module.exports = router;
