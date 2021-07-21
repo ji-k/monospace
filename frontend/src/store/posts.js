@@ -1,17 +1,24 @@
 // define action type as constants
 const SET_POSTS = 'posts/setPosts'
 const SET_POST = 'posts/setPost'
+const ADD_POST = 'posts/addPost'
 
 // define action creator
-const setPosts = (posts) => ({
+export const setPosts = (posts) => ({
     type: SET_POSTS,
     posts,
 })
 
-const setPost = (post) => ({
+export const setPost = (post) => ({
     type: SET_POST,
     post,
 })
+
+export const addPost = (newPost) => ({
+    type: ADD_POST,
+    newPost,
+})
+
 
 // define thunk creator for GET /posts
 export const getPosts = () => async (dispatch) => {
@@ -27,6 +34,21 @@ export const getPost = (id) => async (dispatch) => {
     dispatch(setPost(post)); // pass in post from database
 }
 
+// define thunk creator for POST request
+export const writePost = (payload) => async (dispatch) => {
+    const res = await fetch('/api/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+    const newPost = await res.json();
+
+    if (res.ok) {
+        dispatch(addPost(newPost));
+    }
+    return newPost;
+};
+
 // define the initial state
 const initialState = {};
 
@@ -37,11 +59,16 @@ const postsReducer = (state = initialState, action) => {
             const newPosts = Object.fromEntries(action.posts.map((post) => [post.id, post]))
             return { ...state, ...newPosts };
 
+        case ADD_POST:
+            const addPost = { posts: [...state.posts, action.newPost] };
+            return { ...state, ...addPost };
+
         case SET_POST:
             const newPost = { post: action.post }
             return { ...state, ...newPost };
         default:
             return state;
+
     }
 }
 

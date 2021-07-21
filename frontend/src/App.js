@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import PostsContainer from "./components/PostsContainer";
 import * as postsActions from "./store/posts"
 import PostPage from "./components/PostPage";
+import PostCreate from "./components/PostCreate";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <Route path="/posts/new">
+        <PostCreate />
+      </Route>
       {isLoaded && (
         <Switch>
           <Route path="/signup">
@@ -30,6 +34,9 @@ function App() {
           <Route path="/posts/:id">
             <PostPage />
           </Route>
+          {/* <Route path="/posts/new">
+            <PostCreate />
+          </Route> */}
         </Switch>
       )}
     </>
