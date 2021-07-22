@@ -85,7 +85,8 @@ const postsReducer = (state = initialState, action) => {
 
         case REMOVE_POST:
             const newState = { ...state };
-            newState.posts = newState.posts.filter(post => post.id !== action.postId);
+            delete newState.posts[action.postId];
+            // newState.posts = newState.posts.filter(post => post.id !== action.postId);
             return newState;
         // return {
         //     ...state,
