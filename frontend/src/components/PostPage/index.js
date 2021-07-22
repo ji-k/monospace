@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom'
 import './PostPage.css'
 
 // import the thunk creator
 // import { getPost } from '../../store/posts';
-import { getPosts } from '../../store/posts';
+import { getPosts, deletePost } from '../../store/posts';
 
 const PostPage = () => {
     // declare variables from hooks
@@ -14,6 +14,7 @@ const PostPage = () => {
     const postPages = Object.values(useSelector((state) => state.posts));
     const postPage = postPages.find((post) => post.id === +id);
     // const postPage = useSelector((state) => state.posts.post)
+    const history = useHistory();
 
     // use a 'react' hook and cause a side effect
     useEffect(() => {
@@ -21,11 +22,17 @@ const PostPage = () => {
         dispatch(getPosts())
     }, [dispatch, id]);
 
+    const removePost = () => {
+        dispatch(deletePost(id));
+        history.push('/')
+    }
+
     return (
         <div className="single-post">
             <div className="single-post-title">{postPage?.title}</div>
             <div className="single-post-date">{postPage?.createdAt}</div>
             <div className="single-post-content">{postPage?.content}</div>
+            <button onClick={removePost}>Delete</button>
         </div>
     )
 }

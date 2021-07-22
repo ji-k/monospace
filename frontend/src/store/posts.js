@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf'
 const SET_POSTS = 'posts/setPosts'
 const SET_POST = 'posts/setPost'
 const ADD_POST = 'posts/addPost'
+const REMOVE_POST = 'posts/removePost'
 
 // define action creator
 export const setPosts = (posts) => ({
@@ -18,6 +19,11 @@ export const setPost = (post) => ({
 export const addPost = (newPost) => ({
     type: ADD_POST,
     newPost,
+})
+
+export const removePost = (id) => ({
+    TYPE: REMOVE_POST,
+    id,
 })
 
 
@@ -50,6 +56,19 @@ export const writePost = (payload) => async (dispatch) => {
     return newPost;
 };
 
+// define thunk creator for DELETE request
+export const deletePost = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/posts/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (res.ok) {
+        const postId = await res.json();
+        dispatch(removePost(postId))
+    }
+};
+
 // define the initial state
 const initialState = {};
 
@@ -64,9 +83,25 @@ const postsReducer = (state = initialState, action) => {
             const addPost = { ...state.posts, ...action.newPost };
             return { ...state, ...addPost };
 
+        case REMOVE_POST:
+            const newState = { ...state };
+            newState.posts = newState.posts.filter(post => post.id !== action.postId);
+            return newState;
+        // return {
+        //     ...state,
+        //     [action.postId]: {
+        //         ...state[action.postId],
+        //         posts: state[action.postId].state.posts.filter(
+        //             (post) => post.id !== action.postId
+        //         )
+        //     }
+        // }
+
         case SET_POST:
             const newPost = { post: action.post }
             return { ...state, ...newPost };
+
+
         default:
             return state;
 

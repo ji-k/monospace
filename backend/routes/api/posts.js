@@ -22,7 +22,16 @@ router.get('/:id', asyncHandler(async (req, res) => {
 // Create a Post
 router.post('', validateCreate, asyncHandler(async (req, res) => {
     const post = await Post.create(req.body);
-    return res.json(post)
+    return res.json(post);
+}))
+
+// Delete a Post
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const postId = req.params.id;
+    await Post.destroy({ where: { id: postId } });
+    return postId;
+    // const post = await Post.destroy({ where: { id: req.params.id } });
+    // return res.json(post);
 }))
 
 // Edit a Post
