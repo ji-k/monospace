@@ -20,11 +20,11 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <Route path="/posts/new">
-        <PostCreate />
-      </Route>
       {isLoaded && (
         <Switch>
+          <Route path="/posts/new">
+            <PostCreate />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

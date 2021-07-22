@@ -26,9 +26,6 @@ const PostsContainer = () => {
                 <NavLink key={post.id} to={`/posts/${post.id}`}>
                     <div className='post-title'>{post.title}</div>
                 </NavLink>
-                {/* <div className='post-author'>{post.userId.User.id.username}</div> */}
-
-                {/* <div className='post-author'>{post.userId.username}</div> */}
                 <div className="post-date">{post.createdAt}</div>
                 {/* <div className="post-date">{post.createdAt.toLocaleDateString()}</div> */}
                 <div className='post-content'>{post.content}</div>
