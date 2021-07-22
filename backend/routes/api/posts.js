@@ -4,12 +4,14 @@ const asyncHandler = require('express-async-handler');
 const router = express.Router();
 
 // middleware
-const { Post } = require('../../db/models');
+const { Post, User } = require('../../db/models');
 const { validateCreate } = require('../../validations/posts');
 
 // Get Posts
 router.get('/', asyncHandler(async (req, res) => {
-    const posts = await Post.findAll();
+    const posts = await Post.findAll({
+        include: [User]
+    });
     return res.json(posts);
 }));
 

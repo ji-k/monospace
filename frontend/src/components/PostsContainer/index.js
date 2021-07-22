@@ -22,11 +22,12 @@ const PostsContainer = () => {
         posts.reverse().map(post => (
 
             <div key={post.id} className='post-container'>
+                <div className='post-author'>Posted by {post.User.username}</div>
                 <NavLink key={post.id} to={`/posts/${post.id}`}>
                     <div className='post-title'>{post.title}</div>
                 </NavLink>
                 {/* <div className='post-author'>{post.userId.User.id.username}</div> */}
-                {/* <div className='post-author'>{post.User.username}</div> */}
+
                 {/* <div className='post-author'>{post.userId.username}</div> */}
                 <div className="post-date">{post.createdAt}</div>
                 {/* <div className="post-date">{post.createdAt.toLocaleDateString()}</div> */}
