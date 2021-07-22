@@ -22,7 +22,7 @@ export const addPost = (newPost) => ({
 })
 
 export const removePost = (id) => ({
-    TYPE: REMOVE_POST,
+    type: REMOVE_POST,
     id,
 })
 
@@ -65,7 +65,8 @@ export const deletePost = (id) => async (dispatch) => {
 
     if (res.ok) {
         const postId = await res.json();
-        dispatch(removePost(postId))
+        // dispatch(removePost(postId))
+        dispatch(removePost(id))
     }
 };
 
@@ -85,7 +86,8 @@ const postsReducer = (state = initialState, action) => {
 
         case REMOVE_POST:
             const newState = { ...state };
-            delete newState.posts[action.postId];
+            // delete newState.posts[action.postId];
+            delete newState[action.id];
             // newState.posts = newState.posts.filter(post => post.id !== action.postId);
             return newState;
         // return {

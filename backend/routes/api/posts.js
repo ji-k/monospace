@@ -31,12 +31,12 @@ router.post('', validateCreate, asyncHandler(async (req, res) => {
 router.delete('/:id', asyncHandler(async (req, res) => {
     const postId = req.params.id;
     await Post.destroy({ where: { id: postId } });
-    return postId;
+    // return postId;
     // const post = await Post.destroy({ where: { id: req.params.id } });
-    // return res.json(post);
+    return res.json({});
 }))
 
-// Edit a Post
+// TODO: Edit a Post
 // ! fix this
 // router.put('/:id', asyncHandler(async (req, res) => {
 //     const id = req.params.id;
