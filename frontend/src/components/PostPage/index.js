@@ -31,8 +31,8 @@ const PostPage = () => {
 
     return (
         <div className="single-post">
-            {/* <div className='single-post-author'>Posted by {postPage?.User.username}</div> */}
             <div className="single-post-title">{postPage?.title}</div>
+            <div className='single-post-author'>{postPage?.User.username}</div>
             <div className="single-post-date">{postPage?.createdAt}</div>
             <div className="single-post-content">{postPage?.content}</div>
             {sessionUser?.id === postPage?.userId &&

@@ -22,10 +22,10 @@ const PostsContainer = () => {
         posts.reverse().map(post => (
 
             <div key={post.id} className='post-container'>
-                <div className='post-author'>{post?.User?.username}</div>
                 <NavLink key={post.id} to={`/posts/${post.id}`}>
                     <div className='post-title'>{post.title}</div>
                 </NavLink>
+                <div className='post-author'>{post?.User?.username}</div>
                 <div className="post-date">{post.createdAt}</div>
                 {/* <div className="post-date">{post.createdAt.toLocaleDateString()}</div> */}
                 <div className='post-content'>{post.content}</div>
