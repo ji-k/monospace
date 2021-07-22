@@ -15,8 +15,8 @@ const PostPage = () => {
     const postPage = postPages.find((post) => post.id === +id);
     // const postPage = useSelector((state) => state.posts.post)
     const history = useHistory();
-
     const sessionUser = useSelector(state => state.session.user);
+    const [title, content]
 
     // use a 'react' hook and cause a side effect
     useEffect(() => {
@@ -27,6 +27,10 @@ const PostPage = () => {
     const removePost = () => {
         dispatch(deletePost(id));
         history.push('/')
+    }
+
+    const updatePost = () => {
+
     }
 
     return (

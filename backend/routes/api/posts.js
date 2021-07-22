@@ -38,20 +38,20 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 
 // TODO: Edit a Post
 // ! fix this
-// router.put('/:id', asyncHandler(async (req, res) => {
-//     const id = req.params.id;
-//     const { title, content } = req.body;
-//     console.log({ title, content });
-//     await Post.update({ title, content },
-//         {
-//             where: { id },
-//             returning: true,
-//             plain: true
-//         }
-//     )
-//     const post = await Post.findByPk(id);
-//     return res.json(song)
-// }))
+router.put('/:id', asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const { title, content } = req.body;
+    console.log({ title, content });
+    await Post.update({ title, content },
+        {
+            where: { id },
+            returning: true,
+            plain: true
+        }
+    )
+    const post = await Post.findByPk(id);
+    return res.json(song)
+}))
 
 
 // export the router

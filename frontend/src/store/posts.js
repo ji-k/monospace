@@ -4,6 +4,7 @@ const SET_POSTS = 'posts/setPosts'
 const SET_POST = 'posts/setPost'
 const ADD_POST = 'posts/addPost'
 const REMOVE_POST = 'posts/removePost'
+const UPDATE_SPOT = 'posts/updateSpot'
 
 // define action creator
 export const setPosts = (posts) => ({
@@ -26,6 +27,11 @@ export const removePost = (id) => ({
     id,
 })
 
+export const updatePost = (title, content) => {
+    type: UPDATE_SPOT,
+        title,
+        content
+}
 
 // define thunk creator for GET /posts
 export const getPosts = () => async (dispatch) => {
@@ -69,6 +75,16 @@ export const deletePost = (id) => async (dispatch) => {
         dispatch(removePost(id))
     }
 };
+
+// define thunk creator for PUT request (edit)
+export const updatePost = (title, content) => async (dispatch) => {
+    const res = await csrfFetch(`/api/posts/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ description }),
+    });
+    dispatch(updatePost(title, content));
+    return res;
+}
 
 // define the initial state
 const initialState = {};
