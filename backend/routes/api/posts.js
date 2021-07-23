@@ -50,7 +50,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
         }
     )
     const post = await Post.findByPk(id);
-    return res.json(song)
+    return res.json(post)
 }))
 
 

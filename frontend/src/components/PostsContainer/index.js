@@ -22,7 +22,7 @@ const PostsContainer = () => {
         posts.reverse().map(post => (
 
             <div key={post.id} className='post-container'>
-                <NavLink key={post.id} to={`/posts/${post.id}`}>
+                <NavLink to={`/posts/${post.id}`}>
                     <div className='post-title'>{post.title}</div>
                 </NavLink>
                 <div className='post-author'>{post?.User?.username}</div>

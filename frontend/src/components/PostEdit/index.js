@@ -1,22 +1,22 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editPost } from "../../store/posts";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 // import * as postActions from '../../store/posts.js'
 // postActions.editPost()
 
 const UpdatePost = () => {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    const { id } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
 
-    const reset = () => {
-        setTitle("");
-        setContent("");
-    };
+    // const reset = () => {
+    //     setTitle("");
+    //     setContent("");
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,15 +27,15 @@ const UpdatePost = () => {
         };
 
         // thunk
-        dispatch(editPost(post));
-        console.log(post);
+        dispatch(editPost(post, id));
+        // console.log(post);
         history.push('/');
     };
 
     return (
         <div className="post-input-box">
             <form className="post-form-container" onSubmit={handleSubmit}>
-                <p className="create-post-h1">Edit</p>
+                <p className="create-post-h1">edit</p>
                 <input
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}

@@ -27,9 +27,10 @@ export const removePost = (id) => ({
     id,
 })
 
-export const updatePost = (post) => ({
+export const updatePost = (post, id) => ({
     type: UPDATE_POST,
-    post
+    post,
+    id
 })
 
 // define thunk creator for GET /posts
@@ -76,14 +77,16 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 // define thunk creator for PUT request (edit)
-export const editPost = (post) => async (dispatch) => {
-    const res = await csrfFetch(`/api/posts/${post.userId}`, {
+export const editPost = (post, id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/posts/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ post }),
     });
-    dispatch(updatePost(post));
-    return res;
+    const editedPost = res.json();
+    console.log("hihjkjklkhkhk", editedPost)
+    dispatch(updatePost(editedPost, id));
+    return editedPost;
 }
 
 // define the initial state
@@ -91,6 +94,7 @@ const initialState = {};
 
 // define a reducer
 const postsReducer = (state = initialState, action) => {
+    const newState = { ...state };
     switch (action.type) {
         case SET_POSTS:
             const newPosts = Object.fromEntries(action.posts.map((post) => [post.id, post]))
@@ -101,7 +105,6 @@ const postsReducer = (state = initialState, action) => {
             return { ...state, ...addPost };
 
         case REMOVE_POST:
-            const newState = { ...state };
             // delete newState.posts[action.postId];
             delete newState[action.id];
             // newState.posts = newState.posts.filter(post => post.id !== action.postId);
@@ -120,11 +123,15 @@ const postsReducer = (state = initialState, action) => {
             const newPost = { post: action.post }
             return { ...state, ...newPost };
 
+        // case UPDATE_POST:
+        //     return {
+        //         ...state,
+        //         ...action.post
+        //     }
+
         case UPDATE_POST:
-            return {
-                ...state,
-                ...action.post
-            }
+            newState[action.id] = action.post;
+            return newState;
 
         default:
             return state;
