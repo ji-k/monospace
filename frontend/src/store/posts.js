@@ -4,7 +4,7 @@ const SET_POSTS = 'posts/setPosts'
 const SET_POST = 'posts/setPost'
 const ADD_POST = 'posts/addPost'
 const REMOVE_POST = 'posts/removePost'
-const UPDATE_SPOT = 'posts/updateSpot'
+const UPDATE_POST = 'posts/updatePost'
 
 // define action creator
 export const setPosts = (posts) => ({
@@ -27,11 +27,10 @@ export const removePost = (id) => ({
     id,
 })
 
-export const updatePost = (title, content) => {
-    type: UPDATE_SPOT,
-        title,
-        content
-}
+export const updatePost = (post) => ({
+    type: UPDATE_POST,
+    post
+})
 
 // define thunk creator for GET /posts
 export const getPosts = () => async (dispatch) => {
@@ -77,12 +76,13 @@ export const deletePost = (id) => async (dispatch) => {
 };
 
 // define thunk creator for PUT request (edit)
-export const updatePost = (title, content) => async (dispatch) => {
-    const res = await csrfFetch(`/api/posts/${id}`, {
+export const editPost = (post) => async (dispatch) => {
+    const res = await csrfFetch(`/api/posts/${post.userId}`, {
         method: 'PUT',
-        body: JSON.stringify({ description }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ post }),
     });
-    dispatch(updatePost(title, content));
+    dispatch(updatePost(post));
     return res;
 }
 
@@ -120,6 +120,11 @@ const postsReducer = (state = initialState, action) => {
             const newPost = { post: action.post }
             return { ...state, ...newPost };
 
+        case UPDATE_POST:
+            return {
+                ...state,
+                ...action.post
+            }
 
         default:
             return state;

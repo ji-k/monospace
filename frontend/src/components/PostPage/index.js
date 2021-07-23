@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useHistory, NavLink } from 'react-router-dom'
 import './PostPage.css'
 
 // import the thunk creator
@@ -16,7 +16,6 @@ const PostPage = () => {
     // const postPage = useSelector((state) => state.posts.post)
     const history = useHistory();
     const sessionUser = useSelector(state => state.session.user);
-    const [title, content]
 
     // use a 'react' hook and cause a side effect
     useEffect(() => {
@@ -29,10 +28,6 @@ const PostPage = () => {
         history.push('/')
     }
 
-    const updatePost = () => {
-
-    }
-
     return (
         <div className="single-post">
             <div className="single-post-title">{postPage?.title}</div>
@@ -40,7 +35,12 @@ const PostPage = () => {
             <div className="single-post-date">{postPage?.createdAt}</div>
             <div className="single-post-content">{postPage?.content}</div>
             {sessionUser?.id === postPage?.userId &&
-                <button onClick={removePost}>Delete</button>
+                <div>
+                    <NavLink to={`/edit/${id}`}>
+                        <button>Edit</button>
+                    </NavLink>
+                    <button onClick={removePost}>Delete</button>
+                </div>
             }
         </div>
     )

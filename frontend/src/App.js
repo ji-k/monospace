@@ -8,6 +8,7 @@ import PostsContainer from "./components/PostsContainer";
 import * as postsActions from "./store/posts"
 import PostPage from "./components/PostPage";
 import PostCreate from "./components/PostCreate";
+import PostEdit from "./components/PostEdit";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/posts/:id">
             <PostPage />
+          </Route>
+          <Route path="/edit/:id">
+            <PostEdit />
           </Route>
           {/* <Route path="/posts/new">
             <PostCreate />
