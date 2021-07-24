@@ -14,11 +14,13 @@ a:link {
     text-decoration: none;
 }
 
-/* TODO Add site wide styles */
+/* site wide styles */
 body {
     font-family: 'helvetica neue', 'helvetica', sans-serif;
     font-size: 11pt;
     overflow-x: hidden;
+    background-size: 50px 50px;
+    background-image: linear-gradient(90deg, #e4ffd1 1px, transparent 0), linear-gradient(180deg, #e4ffd1 1px, transparent 0);
 }
 
 footer {

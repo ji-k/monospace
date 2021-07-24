@@ -31,6 +31,7 @@ function LoginForm() {
       <label>
         Username or Email
         <input
+          className="login-input"
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
@@ -40,6 +41,7 @@ function LoginForm() {
       <label>
         Password
         <input
+          className="login-input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}

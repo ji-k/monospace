@@ -10,13 +10,13 @@ const UpdatePost = () => {
     const history = useHistory();
     const { id } = useParams();
     const sessionUser = useSelector((state) => state.session.user);
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
+    // const [title, setTitle] = useState("");
+    // const [content, setContent] = useState("");
 
-    // const reset = () => {
-    //     setTitle("");
-    //     setContent("");
-    // };
+    const post = useSelector((state) => state.posts);
+
+    const [title, setTitle] = useState(post[id].title);
+    const [content, setContent] = useState(post[id].content);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,7 +28,6 @@ const UpdatePost = () => {
 
         // thunk
         dispatch(editPost(post, id));
-        // console.log(post);
         history.push('/');
     };
 
@@ -48,7 +47,7 @@ const UpdatePost = () => {
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     name="content"
-                    placeholder="Write your post."
+                    placeholder="edit your post."
                 ></textarea>
                 <button type="submit">Submit</button>
             </form>

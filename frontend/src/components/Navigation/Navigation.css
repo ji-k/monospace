@@ -39,11 +39,11 @@ nav button {
 }
 
 .profile-item {
-    border-bottom: 0px;
+    border: none;
 }
 
 .profile-dropdown {
-    border-bottom: 0px;
+    border-left: 1px solid black;
 }
 
 .nav-create-post {

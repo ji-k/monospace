@@ -1,4 +1,4 @@
-// create router and asyncHandler
+// create syncHandler and router
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 const router = express.Router();
@@ -36,8 +36,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     return res.json({});
 }))
 
-// TODO: Edit a Post
-// ! fix this
+// Edit a Post
 router.put('/:id', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const { title, content } = req.body;

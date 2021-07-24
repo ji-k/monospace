@@ -37,6 +37,7 @@ const CreatePost = () => {
             <form className="post-form-container" onSubmit={handleSubmit}>
                 <p className="create-post-h1">create</p>
                 <input
+                    className="create-post-title"
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
