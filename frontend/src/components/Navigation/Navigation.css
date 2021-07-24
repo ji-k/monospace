@@ -50,3 +50,13 @@ nav button {
     letter-spacing: 0px;
     margin-right: 10px;
 }
+
+.fa-user-circle:hover {
+    color: lime;
+    border-color: lime;
+}
+
+.fa-icon:hover {
+    color: lime;
+    border-color: lime;
+}
