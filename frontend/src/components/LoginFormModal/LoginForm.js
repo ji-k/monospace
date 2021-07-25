@@ -20,6 +20,12 @@ function LoginForm() {
     );
   };
 
+  const demoLogIn = () => {
+    setCredential('demo@user.io');
+    setPassword('password');
+    setErrors([]);
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <div class="logo">monospace</div>
@@ -49,6 +55,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <button className="btn-demo" type="submit" onClick={() => demoLogIn()}>Use Demo User</button>
     </form>
   );
 }

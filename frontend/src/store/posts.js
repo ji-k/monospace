@@ -81,7 +81,7 @@ export const editPost = (post, id) => async (dispatch) => {
     const res = await csrfFetch(`/api/posts/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify( post ),
+        body: JSON.stringify(post),
     });
     const editedPost = await res.json();
     console.log("hihjkjklkhkhk", editedPost)
