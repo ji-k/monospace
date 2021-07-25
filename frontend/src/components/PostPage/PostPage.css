@@ -14,9 +14,15 @@
     letter-spacing: 1px;
 }
 
+.single-post-author {
+    font-weight: bold;
+    font-style: italic;
+}
+
 .single-post-date {
     font-weight: bold;
     letter-spacing: 1px;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -41,5 +47,6 @@
     font-weight: bold;
     font-size: 11pt;
     margin-right: 5px;
+    margin-bottom: 10px;
     margin-top: 10px;
 }
