@@ -15,8 +15,9 @@ const UpdatePost = () => {
 
     const post = useSelector((state) => state.posts);
 
-    const [title, setTitle] = useState(post[id].title);
-    const [content, setContent] = useState(post[id].content);
+    const [title, setTitle] = useState(post[id]?.title);
+    const [content, setContent] = useState(post[id]?.content);
+    // refresh
 
     const handleSubmit = async (e) => {
         e.preventDefault();

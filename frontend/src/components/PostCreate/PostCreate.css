@@ -20,7 +20,7 @@
 .post-form-container > input {
     display: block;
     font-family: 'helvetica neue', 'helvetica', sans-serif;
-    font-size: 12pt;
+    font-size: 11pt;
     outline: 0;
     border-width: 0px 0px 1px 0px;
     width: 100%;
@@ -45,7 +45,7 @@ textarea {
     box-sizing: border-box;
     width: 100%;
     font-family: 'helvetica neue', 'helvetica', sans-serif;
-    font-size: 12pt;
+    font-size: 11pt;
     resize: none;
 }
 
