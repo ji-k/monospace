@@ -2,9 +2,11 @@
 
 [Live](https://mono-space.herokuapp.com/)
 
-[screenshot1]
+![log-in](https://github.com/ji-k/monospace/blob/main/frontend/public/assets/images/ss1.png)
 
-[screenshot2]
+![index](https://github.com/ji-k/monospace/blob/main/frontend/public/assets/images/ss2.png)
+
+![edit](https://github.com/ji-k/monospace/blob/main/frontend/public/assets/images/ss3.png)
 
 ## Target Features
 * User authentication: users can sign up and sign in
