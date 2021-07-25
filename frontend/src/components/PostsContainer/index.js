@@ -18,6 +18,8 @@ const PostsContainer = () => {
         dispatch(getPosts());
     }, [dispatch]);
 
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
     return (
         posts.reverse().map(post => (
             <div key={post.id} className='post-container'>
@@ -25,8 +27,7 @@ const PostsContainer = () => {
                     <div className='post-title'>{post.title}</div>
                 </NavLink>
                 <div className='post-author'>{post?.User?.username}</div>
-                <div className="post-date">{post.createdAt}</div>
-                {/* <div className="post-date">{post.createdAt.toLocaleDateString()}</div> */}
+                <div className="post-date">{new Date(post.createdAt).toLocaleDateString(undefined, options)}</div>
                 <div className='post-content'>{post.content}</div>
 
             </div>
