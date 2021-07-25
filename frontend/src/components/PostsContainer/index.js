@@ -27,7 +27,8 @@ const PostsContainer = () => {
                     <div className='post-title'>{post.title}</div>
                 </NavLink>
                 <div className='post-author'>{post?.User?.username}</div>
-                <div className="post-date">{new Date(post.createdAt).toLocaleDateString(undefined, options)}</div>
+                <div className='post-date'>{post?.createdAt}</div>
+                {/* <div className="post-date">{new Date(post.createdAt).toLocaleDateString(undefined, options)}</div> */}
                 <div className='post-content'>{post.content}</div>
 
             </div>

@@ -34,8 +34,8 @@ const PostPage = () => {
         <div className="single-post">
             <div className="single-post-title">{postPage?.title}</div>
             <div className='single-post-author'>{postPage?.User?.username}</div>
-            {/* <div className="single-post-date">{postPage?.createdAt}</div> */}
-            <div className="single-post-date">{new Date(postPage?.createdAt).toLocaleDateString(undefined, options)}</div>
+            <div className="single-post-date">{postPage?.createdAt}</div>
+            {/* <div className="single-post-date">{new Date(postPage?.createdAt).toLocaleDateString(undefined, options)}</div> */}
             <div className="single-post-content">{postPage?.content}</div>
             {sessionUser?.id === postPage?.userId &&
                 <div>
