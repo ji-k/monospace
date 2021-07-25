@@ -9,3 +9,17 @@
     top: -135px;
     right: 20px;
 }
+
+.signup-form-container input {
+    display: block;
+    font-family: 'helvetica neue', 'helvetica', sans-serif;
+    outline: 0;
+    border-width: 0px 0px 1px 0px;
+    width: 354px;
+    margin-top: 10px;
+    margin-bottom: 20px
+}
+
+.signup-form-container input:focus {
+    border-color: lime;
+}
